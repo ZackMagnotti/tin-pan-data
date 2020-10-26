@@ -22,7 +22,7 @@ def get(save=False):
                               'date' : ['min', 'max'],
                               'length': 'first',
                               'track_length': 'first'})
-          )
+           )
 
   albums.columns = ['power_rank',
                     'num_appearances',
