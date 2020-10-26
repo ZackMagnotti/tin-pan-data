@@ -1,2 +1,5 @@
 .ipynb_checkpoints
 delme.*
+data/billboard-200.db
+data/zippedData.zip
+src/__pycache__
