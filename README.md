@@ -83,30 +83,5 @@ The documentation for Spotify EchoNest data can be found at https://developer.sp
       <td>float</td>
       <td>The overall estimated tempo of a track in beats per minute (BPM). In musical terminology, tempo is the speed or pace of a given piece and derives directly from the average beat duration. The distribution of values for this feature look like this: <a href="https://developer.spotify.com/assets/audio/tempo.png" target="\_blank"><img src="https://developer.spotify.com/assets/audio/tempo.png" alt="Tempo distribution"></a></td>
     </tr>
-    <tr>
-      <td>id</td>
-      <td>string</td>
-      <td>The Spotify ID for the track.</td>
-    </tr>
-    <tr>
-      <td>uri</td>
-      <td>string</td>
-      <td>The Spotify URI for the track.</td>
-    </tr>
-    <tr>
-      <td>track_href</td>
-      <td>string</td>
-      <td>A link to the Web API endpoint providing full details of the track.</td>
-    </tr>
-    <tr>
-      <td>analysis_url</td>
-      <td>string</td>
-      <td>An HTTP URL to access the full audio analysis of this track. An access token is required to access this data.</td>
-    </tr>
-    <tr>
-      <td>type</td>
-      <td>string</td>
-      <td>The object type: "audio_features"</td>
-    </tr>
   </tbody>
 </table>
