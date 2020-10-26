@@ -47,13 +47,36 @@ def get(save=False):
                    'num_albums',
                    'first_appearance',
                    'last_appearance']
-  
-  out = (albums, 
-         artists,
-        )
+
+  query = '''
+  SELECT song,
+        album,
+        artist,
+        date,
+        key,
+        mode,
+        valence,
+        tempo,
+        time_signature,
+        danceability,
+        energy,
+        liveness,
+        loudness,
+        acousticness,
+        instrumentalness,
+        speechiness
+  FROM acoustic_features
+  '''
+  songs = pd.read_sql_query(query, conn)
 
   if save:
     artists.to_csv('data/artists.csv')
     albums.to_csv('data/albums.csv')
+    songs.to_csv('data/songs.csv')
+  
+  out = (albums, 
+         artists,
+         songs
+        )
 
   return out
