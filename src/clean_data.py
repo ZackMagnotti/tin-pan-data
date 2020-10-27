@@ -2,6 +2,8 @@ import sqlite3
 import pandas as pd
 
 song_parameters = ['tempo',
+                   'key',
+                   'mode',
                    'valence',
                    'danceability', 
                    'energy',
