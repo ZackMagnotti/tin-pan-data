@@ -68,6 +68,7 @@ def get(save=False):
   FROM acoustic_features
   '''
   songs = pd.read_sql_query(query, conn)
+  songs['date'] = pd.to_datetime(songs['date'])
 
   if save:
     artists.to_csv('data/artists.csv')
@@ -76,7 +77,6 @@ def get(save=False):
   
   out = (albums, 
          artists,
-         songs
-        )
+         songs)
 
   return out
