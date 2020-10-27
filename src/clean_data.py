@@ -31,7 +31,7 @@ def get(save=False):
                     'last_appearance',
                     'length',
                     'track_length']
-  albums = albums.reset_index()
+#   albums = albums.reset_index()
 
   # artists: aggregated data about every artist
   artists = (albums_table.groupby('artist')
@@ -53,6 +53,7 @@ def get(save=False):
         album,
         artist,
         date,
+        duration_ms,
         key,
         mode,
         valence,
