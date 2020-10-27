@@ -1,6 +1,26 @@
 import sqlite3
 import pandas as pd
 
+song_parameters = ['tempo',
+                   'valence',
+                   'danceability', 
+                   'energy',
+                   'liveness', 
+                   'loudness', 
+                   'acousticness', 
+                   'instrumentalness',
+                   'speechiness']
+
+# normal parameters are the parameters
+# that only range from 0 to 1
+normal_parameters = ['valence',
+                     'danceability', 
+                     'energy',
+                     'liveness', 
+                     'acousticness', 
+                     'instrumentalness',
+                     'speechiness']
+
 def get(save=False):
   conn = sqlite3.connect('data/billboard-200.db')
 
@@ -71,12 +91,21 @@ def get(save=False):
   songs = pd.read_sql_query(query, conn)
   songs['date'] = pd.to_datetime(songs['date'])
 
+  # add colum to albums for average
+  # song parameter values of the songs
+  # in each album
+  albums[song_parameters] = (songs.join(albums, on=['album', 'artist'])
+                                  .groupby(['album', 'artist'])
+                                  .mean()
+                            )[song_parameters]
+
   if save:
     artists.to_csv('data/artists.csv')
     albums.to_csv('data/albums.csv')
     songs.to_csv('data/songs.csv')
   
-  out = (albums, 
+  out = (albums_table,
+         albums,
          artists,
          songs)
 
