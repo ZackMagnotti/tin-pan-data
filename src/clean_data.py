@@ -26,19 +26,19 @@ normal_parameters = ['valence',
 def get(save=False):
   conn = sqlite3.connect('data/billboard-200.db')
 
-  albums_table = pd.read_sql_query('select * from albums', conn)[1:]
+  albums_raw = pd.read_sql_query('select * from albums', conn)[1:]
 
   # sanitize rank and date and create "power" datapoint
-  albums_table['rank'] = pd.to_numeric(albums_table['rank'], downcast='signed')
-  albums_table['power'] = 1 / albums_table['rank']
-  albums_table['date'] = pd.to_datetime(albums_table['date'])
+  albums_raw['rank'] = pd.to_numeric(albums_raw['rank'], downcast='signed')
+  albums_raw['power'] = 1 / albums_raw['rank']
+  albums_raw['date'] = pd.to_datetime(albums_raw['date'])
 
   # fill in missing artist names
-  albums_table[albums_table['album']=='Silhouette'] = albums_table[albums_table['album']=='Silhouette'].replace({'':'Kenny G'})
-  albums_table[albums_table['album']=='Roots Of Country Music (1965)'] = albums_table[albums_table['album']=='Roots Of Country Music (1965)'].replace({'':'Various Artists'})
+  albums_raw[albums_raw['album']=='Silhouette'] = albums_raw[albums_raw['album']=='Silhouette'].replace({'':'Kenny G'})
+  albums_raw[albums_raw['album']=='Roots Of Country Music (1965)'] = albums_raw[albums_raw['album']=='Roots Of Country Music (1965)'].replace({'':'Various Artists'})
 
   # albums: aggregated data about every album
-  albums = (albums_table.groupby(['album', 'artist'])
+  albums = (albums_raw.groupby(['album', 'artist'])
                         .agg({'power': 'sum',
                               'rank' : ['count', 'mean'],
                               'date' : ['min', 'max'],
@@ -56,7 +56,7 @@ def get(save=False):
 #   albums = albums.reset_index()
 
   # artists: aggregated data about every artist
-  artists = (albums_table.groupby('artist')
+  artists = (albums_raw.groupby('artist')
                         .agg({'power': 'sum',
                               'rank' : ['count', 'mean'],
                               'album': 'nunique',
@@ -102,11 +102,12 @@ def get(save=False):
                             )[song_parameters]
 
   if save:
+    albums_raw.to_csv('data/albums_raw.csv')
     artists.to_csv('data/artists.csv')
     albums.to_csv('data/albums.csv')
     songs.to_csv('data/songs.csv')
   
-  out = (albums_table,
+  out = (albums_raw,
          albums,
          artists,
          songs)
