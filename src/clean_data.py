@@ -24,6 +24,19 @@ normal_parameters = ['valence',
                      'speechiness']
 
 def get(save=False):
+  '''
+  Function to perform the basic cleaning and organization of
+  the billboard-200 dataset.
+
+    INPUT
+    ---------
+    save (OPTIONAL - Boolean): Boolean, if true save outputs to csv before returning
+
+
+    OUTPUT
+    ---------
+    out ( Tuple(pd.DataFrame) ) : tuple of dataframes containing the cleaned data
+  '''
   conn = sqlite3.connect('data/billboard-200.db')
 
   albums_raw = pd.read_sql_query('select * from albums', conn)[1:]
