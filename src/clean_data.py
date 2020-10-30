@@ -85,22 +85,22 @@ def get(save=False):
 
   query = '''
   SELECT song,
-        album,
-        artist,
-        date,
-        duration_ms,
-        key,
-        mode,
-        valence,
-        tempo,
-        time_signature,
-        danceability,
-        energy,
-        liveness,
-        loudness,
-        acousticness,
-        instrumentalness,
-        speechiness
+         album,
+         artist,
+         date,
+         duration_ms,
+         key,
+         mode,
+         valence,
+         tempo,
+         time_signature,
+         danceability,
+         energy,
+         liveness,
+         loudness,
+         acousticness,
+         instrumentalness,
+         speechiness
   FROM acoustic_features
   '''
   songs = pd.read_sql_query(query, conn)
