@@ -39,11 +39,11 @@ def get(save=False):
 
   # albums: aggregated data about every album
   albums = (albums_raw.groupby(['album', 'artist'])
-                        .agg({'power': 'sum',
-                              'rank' : ['count', 'mean'],
-                              'date' : ['min', 'max'],
-                              'length': 'first',
-                              'track_length': 'first'})
+                      .agg({'power': 'sum',
+                            'rank' : ['count', 'mean'],
+                            'date' : ['min', 'max'],
+                            'length': 'first',
+                            'track_length': 'first'})
            )
 
   albums.columns = ['power_rank',
@@ -57,18 +57,18 @@ def get(save=False):
 
   # artists: aggregated data about every artist
   artists = (albums_raw.groupby('artist')
-                        .agg({'power': 'sum',
-                              'rank' : ['count', 'mean'],
-                              'album': 'nunique',
-                              'date' : ['min', 'max']})
+                       .agg({'power': 'sum',
+                             'rank' : ['count', 'mean'],
+                             'album': 'nunique',
+                             'date' : ['min', 'max']})
             )
 
   artists.columns = ['power_rank',
-                   'num_appearances',
-                   'average_rank',
-                   'num_albums',
-                   'first_appearance',
-                   'last_appearance']
+                     'num_appearances',
+                     'average_rank',
+                     'num_albums',
+                     'first_appearance',
+                     'last_appearance']
 
   query = '''
   SELECT song,
