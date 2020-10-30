@@ -21,7 +21,7 @@ The documentation for Spotify EchoNest data can be found in the docs folder, or 
 
 Hypothesis: The the average "speechiness" of music trends upward over time after 1985, as rap music was invented and popularized
 
-![Equation](images/equation_speechiness.png)
+![Equation](images/equations_speechiness.png)
 
 ### Results
 
@@ -35,7 +35,7 @@ Successfully rejected null hypothesis
 
 Hypothesis: The relationship between danceability and energy is consistent over time, but both of thier relationships with valence (measure of positiveness) have drifted apart
 
-![Equation](images/equation_VDE.png)
+![Equation](images/equations_VDE.png)
 
 ### Results
 
