@@ -7,4 +7,4 @@ This is an exploratory data analysis project aimed at a data set containing info
 
 The data for this project is too big to upload to github but can be found at https://components.one/datasets/billboard-200.
 
-The documentation for Spotify EchoNest data can be found at https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/.
+The documentation for Spotify EchoNest data can be found in the docs folder, or at https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/.
