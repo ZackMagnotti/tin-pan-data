@@ -37,8 +37,8 @@ after 1985, as rap music was invented and popularized
 
 ```
 Successfully rejected null hypothesis 
- p = 0.014
- T = 2.5
+ p = 0.008
+ T = 2.7
 ```
 
 ## Relationship Between Valence, Danceability, and Energy
@@ -53,11 +53,11 @@ have drifted apart
 
 ```
 Successfully rejected null hypothesis on 
- [valence vs danceability] : p = 0.0
+ [valence vs danceability] : p = 5.75e-14
 
 Failed to reject null hypothesis on 
- [danceability vs energy] : p = 0.8525
+ [danceability vs energy] : p = 0.87
 
 Successfully rejected null hypothesis on 
- [energy vs valence] : p = 0.0069
+ [energy vs valence] : p = 2.09e-08
 ```
